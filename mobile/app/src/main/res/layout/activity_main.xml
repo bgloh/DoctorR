@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FF40bdb7"
+    tools:context=".activity.MainActivity">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/bgimage"
+        android:src="@drawable/img_bg"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+            <TextView
+                android:gravity="center"
+                android:id="@+id/tv_age"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:gravity="center"
+                android:id="@+id/tv_join_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:id="@+id/imageView"
+                android:src="@drawable/logo"
+                android:layout_below="@+id/linearLayout"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="28dp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true">
+
+                <Button
+                    android:layout_width="0px"
+                    android:layout_weight="1"
+                    android:layout_height="102dp"
+                    android:text="@string/main_btn2"
+                    android:id="@+id/btn_main_2"
+                    android:onClick="mClick"
+                    android:layout_above="@+id/btn_main_3"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/roundbutton1"
+                    android:textColor="@android:color/background_light"
+                    android:textIsSelectable="false"
+                    android:textSize="25sp"
+                    android:layout_margin="10dp" />
+
+                <Button
+                    android:layout_width="0px"
+                    android:layout_weight="1"
+                    android:text="@string/main_btn1"
+                    android:id="@+id/btn_main_1"
+                    android:onClick="mClick"
+                    android:layout_below="@+id/imageView"
+                    android:layout_above="@+id/btn_main_2"
+                    android:layout_height="102dp"
+                    android:background="@drawable/roundbutton2"
+                    android:textSize="25sp"
+                    android:textColor="@android:color/background_light"
+                    android:layout_margin="10dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imageView"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true">
+
+                <Button
+                    android:layout_width="0px"
+                    android:layout_weight="1"
+                    android:layout_height="102dp"
+                    android:text="@string/main_btn4"
+                    android:id="@+id/btn_main_4"
+                    android:onClick="mClick"
+                    android:layout_below="@+id/btn_main_3"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/roundbutton3"
+                    android:textSize="25sp"
+                    android:elevation="1dp"
+                    android:layout_margin="10dp" />
+
+                <Button
+                    android:layout_width="0px"
+                    android:layout_weight="1"
+                    android:layout_height="102dp"
+                    android:text="@string/main_btn3"
+                    android:id="@+id/btn_main_3"
+                    android:onClick="mClick"
+                    android:layout_centerVertical="false"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="25sp"
+                    android:background="@drawable/roundbutton4"
+                    android:textColor="@android:color/background_light"
+                    android:layout_margin="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="30sp"
+                android:layout_gravity="center_horizontal">
+                <TextView
+                    android:id="@+id/tv_main_corrected_age"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:text="교정 연령"/>
+                <TextView
+                    android:id="@+id/tv_main_joining_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:text="가입 일자"/>
+            </LinearLayout>
+
+        </LinearLayout>
+        <Button
+            android:text="도움말"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/help"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:background="#FFEECC"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            />
+
+        <Button
+            android:text="로그 아웃"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/logout"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:background="#FFEECC"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="height">
+        <item>0.5</item>
+        <item>1</item>
+        <item>1.5</item>
+        <item>2</item>
+        <item>2.5</item>
+        <item>-5</item>
+        <item>-4</item>
+        <item>-3</item>
+        <item>-2</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+    </string-array>
+
+    <!--습도 리소스-->
+    <string-array name="weight">
+        <item>0.5</item>
+        <item>1</item>
+        <item>1.5</item>
+        <item>2</item>
+        <item>2.5</item>
+        <item>3</item>
+        <item>3.6</item>
+        <item>4</item>
+        <item>4.5</item>
+        <item>5</item>
+        <item>5.5</item>
+        <item>6</item>
+        <item>6.5</item>
+        <item>7</item>
+        <item>7.5</item>
+    </string-array>
+
+    <string-array name="hospital">
+        <item>선택</item>
+        <item>소아청소년과</item>
+        <item>내과</item>
+        <item>안과</item>
+        <item>이비인후과</item>
+        <item>재활의학과</item>
+        <item>정형외과</item>
+        <item>치과</item>
+        <item>피부과</item>
+    </string-array>
+
+
+    <string-array name="depart">
+        <item>선택</item>
+        <item>소아청소년과</item>
+        <item>내과</item>
+        <item>안과</item>
+        <item>이비인후과</item>
+        <item>재활의학과</item>
+        <item>정형외과</item>
+        <item>치과</item>
+        <item>피부과</item>
+    </string-array>
+
+    <string-array name="shot">
+        <item>선택</item>
+        <item>일본뇌염</item>
+        <item>수두</item>
+        <item>A형간염</item>
+        <item>B형간염</item>
+        <item>폴리오</item>
+        <item>BCG</item>
+        <item>DTaP</item>
+        <item>Rotavirus</item>
+        <item>MMR</item>
+        <item>PCV</item>
+        <item>Hib</item>
+    </string-array>
+
+</resources>

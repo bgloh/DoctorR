@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Dr.R</string>
+    <string name="main_btn1">시간 측정</string>
+    <string name="main_btn2">일지 작성</string>
+    <string name="main_btn3">성장 곡선</string>
+    <string name="main_btn4">일지 조회</string>
+    <string name="doctor_phone_num">의사 확인 중..</string>
+    <string name="drImgDescription">의사 사진입니다.</string>
+    <string name="Created">Created by CoAwesome</string>
+    <string name="breakfast">아침:\u0020</string>
+    <string name="lunch">점심:\u0020</string>
+    <string name="dinner">저녁:\u0020</string>
+    <string name="sleepingTime">수면시간:\u0020</string>
+    <string name="bloodPressure">혈압:\u0020</string>
+    <string name="drinking">음주:\u0020</string>
+    <string name="temperature">온도:\u0020</string>
+    <string name="humid">습도:\u0020</string>
+    <string name="write_date">작성일:\u0020</string>
+    <string name="writer">작성자:\u0020</string>
+    <string name="make_question">질문하기</string>
+    <string name="make_question_title">제목</string>
+    <string name="make_question_content">내용</string>
+    <string name="make_question_submit">작성 완료</string>
+    <string name="agreement1">
+        개인정보수집·이용 및 제3자제공동의서 ·수집․이용목적 연구실에서 가입자 자녀의 생활 패턴 관리서비스 제공을 목적으로 가입자의 자녀 개인정보를 수집하고 있으며 수집된 정보는 영유아 생활 패턴 관리서비스를 제공하는데 이용합니다. ·수집항목 필수항목: 성명, 성별, 출생주수, 예정일, 체중, 키, 수면시간, 식이 시간, 수유(식이)량 ·보유 및 이용기간 수집된 개인정보는 3년 ·동의 거부 권리안내 위의 개인정보 수집‧이용에 대한 동의를 거부할 권리가 있습니다. 그러나 동의를 거부할 경우 원활한 서비스 제공에 일부 제한을 받을 수 있습니다.
+    </string>
+    <string name="agreement2">
+        개인정보 제3자 제공 내역 개인정보를 제공받는자 : 연구실 ·제공 받는 자의 개인정보 이용목적 : 맞춤형 의학정보 수집 ·제공하는 개인정보의 항목 성별, 출생주수, 예정일, 체중, 키, 수면시간, 식이 시간, 수유(식이)량 ·제공받는자의 개인정보 보유 및 이용기간 수집된 개인정보는 3년 ·동의 거부 권리안내 위의 개인정보 제공에 대한 동의를 거부할 권리가 있습니다. 그러나 동의를 거부할 경우 원활한 서비스 제공에 일부 제한을 받을 수 있습니다.
+    </string>
+
+
+</resources>
