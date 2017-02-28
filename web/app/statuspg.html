@@ -1,0 +1,54 @@
+
+<div class="container-fluid" style="padding-top: 50px; background-color: whitesmoke">
+    <div class="row">
+
+        <div class="main">
+            <h1>Dr.{{a_name}}님의 환자 현황</h1>
+
+            <h3>일지 현황</h3>
+            <div class="sk-fading-circle" ng-style="loadingStyle">
+                <div class="sk-circle1 sk-circle"></div>
+                <div class="sk-circle2 sk-circle"></div>
+                <div class="sk-circle3 sk-circle"></div>
+                <div class="sk-circle4 sk-circle"></div>
+                <div class="sk-circle5 sk-circle"></div>
+                <div class="sk-circle6 sk-circle"></div>
+                <div class="sk-circle7 sk-circle"></div>
+                <div class="sk-circle8 sk-circle"></div>
+                <div class="sk-circle9 sk-circle"></div>
+                <div class="sk-circle10 sk-circle"></div>
+                <div class="sk-circle11 sk-circle"></div>
+                <div class="sk-circle12 sk-circle"></div>
+            </div>
+
+            <div class="table-responsive placeholder" id="patient" ng-repeat="p in patientStatusList">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-sm-2" >
+                            <div class="row placeholders">
+                                    <img src="img/someone.png" width="150" height="150" class="img-fluid" alt="Generic placeholder thumbnail">
+                                    <h4>{{p.u_name}}</h4>
+                                    <span class="text-muted">{{p.u_disease}}</span>
+                                </div>
+                            </div>
+                        <div class="col-lg-10 col-md-10 col-sm-10 col-sm-10">
+                            <button class="btn btn-default" ng-click="chart_view = 1"><span class="glyphicon glyphicon-random"></span> 온습도</button>
+                            <button class="btn btn-default" ng-click="chart_view = 2"><span class="glyphicon glyphicon-stats"></span> 수면시간</button>
+                            <button class="btn btn-default" ng-click="chart_view = 3"><span class="glyphicon glyphicon-random"></span> 혈압</button>
+                            <div ng-show="chart_view == 1">
+                                <canvas id="line" class="chart chart-line" chart-data="p.c_temperatureAndHumid"
+                                        chart-labels="p.c_date" chart-legend="true" chart-series="temp_series"
+                                        chart-click="LineOnClick" height="60" chart-colours="colours">
+                                </canvas></div>
+                            <div ng-show="chart_view == 2">
+                                <canvas id="bar" class="chart chart-bar"
+                                        chart-data="p.c_sleepTime" chart-labels="p.c_date" chart-series="sleep_series" height="60" chart-colours="colours">
+                                </canvas></div>
+                            <div ng-show="chart_view == 3">
+                                <canvas id="line2" class="chart chart-line" chart-data="p.c_bloodPressure"
+                                        chart-labels="p.c_date" chart-legend="true" chart-series="blood_series"
+                                        chart-click="LineOnClick" height="60" chart-colours="colours">
+                                </canvas></div>
+                        </div>
+            </div>
+        </div>
+    </div>
+</div>

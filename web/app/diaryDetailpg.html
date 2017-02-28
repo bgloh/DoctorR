@@ -1,0 +1,59 @@
+<div class="container-fluid" style="padding-top: 50px; background-color: whitesmoke">
+    <div class="row">
+
+        <div class="main">
+            <h1>{{a_name}}님의 일지 보기</h1>
+
+            <h2>일지 보기</h2>
+            <div class="table-responsive">
+                <div class="sk-fading-circle" ng-style="loadingStyle">
+                    <div class="sk-circle1 sk-circle"></div>
+                    <div class="sk-circle2 sk-circle"></div>
+                    <div class="sk-circle3 sk-circle"></div>
+                    <div class="sk-circle4 sk-circle"></div>
+                    <div class="sk-circle5 sk-circle"></div>
+                    <div class="sk-circle6 sk-circle"></div>
+                    <div class="sk-circle7 sk-circle"></div>
+                    <div class="sk-circle8 sk-circle"></div>
+                    <div class="sk-circle9 sk-circle"></div>
+                    <div class="sk-circle10 sk-circle"></div>
+                    <div class="sk-circle11 sk-circle"></div>
+                    <div class="sk-circle12 sk-circle"></div>
+                </div>
+
+                <button class="btn btn-link" ng-click="exportToExcel('#exportable')">
+                    <span class="glyphicon glyphicon-share"></span> Export to Excel
+                </button>
+                <div  id="exportable">
+                <table class="table table-striped export-table">
+                    <thead>
+                    <tr>
+                        <th>아침</th>
+                        <th>점심</th>
+                        <th>저녁</th>
+                        <th>온도</th>
+                        <th>습도</th>
+                        <th>수면시간</th>
+                        <th>혈압</th>
+                        <th>음주여부</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>{{breakfast}}</td>
+                        <td>{{lunch}}</td>
+                        <td>{{dinner}}</td>
+                        <td>{{temperature}}</td>
+                        <td>{{humid}}</td>
+                        <td>{{sleepTime}}</td>
+                        <td>{{bloodPressure}}</td>
+                        <td>{{drinking}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                </div>
+                <br><br><br><br><br><br>
+            </div>
+        </div>
+    </div>
+</div>

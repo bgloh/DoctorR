@@ -1,0 +1,43 @@
+<div class="container-fluid" ng-controller="leftSideBarCtrl">
+    <!-- 로딩 -->
+    <div ng-style="loadingStyle" class="col-sm-12 col-md-12 col-lg-12 col-xs-12" style="z-index: 9; background-color: rgba(255,255,255,0.5); position: fixed; height: 1000px"></div>
+
+    <div class="sk-fading-circle" ng-style="loadingStyle" style="z-index: 11">
+        <div class="sk-circle1 sk-circle"></div>
+        <div class="sk-circle2 sk-circle"></div>
+        <div class="sk-circle3 sk-circle"></div>
+        <div class="sk-circle4 sk-circle"></div>
+        <div class="sk-circle5 sk-circle"></div>
+        <div class="sk-circle6 sk-circle"></div>
+        <div class="sk-circle7 sk-circle"></div>
+        <div class="sk-circle8 sk-circle"></div>
+        <div class="sk-circle9 sk-circle"></div>
+        <div class="sk-circle10 sk-circle"></div>
+        <div class="sk-circle11 sk-circle"></div>
+        <div class="sk-circle12 sk-circle"></div>
+    </div>
+    <div class="sidebar">
+        <ul class="nav nav-pills">
+            <li role="presentation" class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" ui-sref="main" role="button" aria-expanded="false">
+                    환자 목록<span class="caret"></span>
+                </a>
+               <!-- <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">전체보기</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">소아청소년과</a></li>
+                    <li><a href="#">안과</a></li>
+                    <li><a href="#">피부과</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">남자</a></li>
+                    <li><a href="#">여자</a></li>
+                </ul>-->
+            </li>
+        </ul>
+        <ul class="nav nav-sidebar" ng-repeat="p in allPatientList" ng-click="diaryListPost(p.u_id,p.u_name,p)" style="margin-bottom: 0px">
+            <li ng-hide="p.u_discharged == 1"><a ui-sref="main">{{p.u_name}} <span class="sr-only">(current)</span>({{p.u_sex}})</a></li>
+            <li ng-hide="p.u_discharged == 1" style="margin-top: -8px; font-size: 10px; color: currentColor; background-color: gainsboro;"><center>
+                {{p.u_join_date | date:"yyyy.MM.dd 가입"}} <p style="margin: 0;">{{p.u_w}}kg  / {{p.u_h}}cm </p> </center></li>
+        </ul>
+    </div>
+</div>

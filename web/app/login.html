@@ -1,0 +1,118 @@
+<div ng-include="'mainHeader2.html'"></div>
+<div><br><br><br></div>
+<img src="img/img_bg.png" style="position:fixed; bottom: 0; left: 0; width: 300px; height: auto; z-index: -10">
+<div class="tab-content" style="text-align: right;">
+    <!--아이디,비밀번호 찾는 TAB 공간-->
+    <div id="FindId" class="tab-pane" style="margin-top: -50px">
+        <div class="container-fluid">
+            <div id='findnavi'>
+                <ul>
+                    <li class="text-center" id="li1" ><a href="#men1" data-toggle="tab">계정등록</a></li>
+                    <li class="text-center" id="li3"><a href="#men2" data-toggle="tab" >비밀번호찾기</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="tab-content">
+            <div id="men1" class="tab-pane">
+                <!--실제로 회원가입 폼이 들어가는 바디부분-->
+                <div ng-controller="joinCtrl">
+                    <form id='signupform' name="joinform" class="form-signin form-inline" ng-submit="joinPost()">
+                        <h4 class="form-signin-heading" style="margin-bottom: 30px">계정 등록을 위한 정보를 입력하세요</h4>
+                        <div class="form-group">
+                            <label for="inputID">메일주소(ID) :</label>
+                            <input  type="email" ng-model="join.e_mail" id="inputID" class="form-control" placeholder="메일로 인증링크가 발송됩니다." required autofocus>
+                            <button type="button" class="btn btn-xs btn-primary btn-block" style="margin-bottom: 10px; background-color: #9acfea; color: #000000;" ng-click="idCheck(join.e_mail)">중복 확인</button>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword">패스워드 :</label>
+                            <input type="password" ng-model="join.a_password" id="inputPassword" class="form-control" placeholder="PassWord" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputPasswordCheck">패스워드 확인 :</label>
+                            <input type="password" id="inputPasswordCheck" ng-model="join.password_ck" class="form-control" placeholder="Password Check" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputName">이름 :</label>
+                            <input type="text" ng-model="join.a_name" id="inputName" class="form-control" placeholder="Name" required>
+
+                        </div>
+                        <div class="form-group" style="margin-top: 10px">
+                            <label for="inputPhone">연락처 :</label>
+                            <input type="number" ng-model="join.a_phone" id="inputPhone" class="form-control" placeholder="숫자만 입력해주세요." required>
+
+                        </div>
+                        <div class="form-group" style="margin-top: 10px">
+                            <label for="inputHospital">병원이름 :</label>
+                            <input type="text" ng-model="join.a_hospital" id="inputHospital" class="form-control" placeholder="OO병원" required>
+                        </div>
+
+                        <button class="btn btn-lg btn-primary btn-block"  style="margin-top: 10px;background-color: #000066; border: 0px" type="submit" ng-disabled="isDisabled">Sign Up</button>
+                    </form>
+
+                </div>
+            </div>
+
+            <div id="men2" class="tab-pane">
+                <div ng-controller="findPASSCtrl">
+                    <form  class="form-signin"  ng-submit="findPASSPost()">
+                        <h4 class="form-signin-heading" style="margin-bottom: 30px">비밀번호를 찾기 위한 정보를 입력하세요 </h4>
+                        <div class="form-group">
+                            <label for="id-for-findpw">이메일 입력 :</label>
+                            <input type="email" ng-model="findPASS.e_mail" id="id-for-findpw" class="form-control" placeholder="Email" required autofocus>
+                        </div>
+                        <div class="form-group">
+                            <label for="name-for-findpw">이름 입력 :</label>
+                            <input type="name" ng-model="findPASS.a_name" id="name-for-findpw" class="form-control" placeholder="Name" required autofocus>
+                        </div>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit" style="background-color: #000066; border: 0px">이메일로 비밀번호 받기</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+            <!-- Wrapper for slides -->
+        <style>
+         .view {
+             display: none;
+         }
+    </style>
+            <div ng-controller="loginCtrl" id="login" class="view" style="bottom: 10px; text-align: -webkit-center">
+                <img src="img/logo.png" style="width: 10%; height: auto;">
+                <form  name="loginform" id='loginform' class="form-signin form-inline" ng-submit="loginPost()">
+                    <div class="nav" >
+                            <label for="loginId"></label>
+                            <input type="text" ng-model="login.e_mail" id="loginId" class="form-control" style="border-radius: 0%; width: 100%" placeholder="ID" ng-disabled="dis" required autofocus>
+                        </div>
+                        <div class="form-group" style="width: 100%">
+                            <label for="loginPw"></label>
+                            <input type="password" ng-model="login.a_password" id="loginPw" class="form-control" style="border-radius: 0%; width: 100%" placeholder="PASS" ng-disabled="dis" required autofocus>
+                        </div>
+
+                        <button class="btn btn-lg btn-primary btn-block" id="mainbtn" type="submit" style="background-color: #3c3c3c; border: 0px" ng-disabled="dis">Sign in</button>
+
+                        <div class="checkbox">
+                        </div>
+                </form>
+
+                <!-- 로딩 -->
+                <div style="box-shadow : rgba(0,0,0,0.5) 0 0 0 9999px;z-index : 100;" ng-style="loadingStyle">
+                    <div class="sk-fading-circle" style="z-index : 200;">
+                        <div class="sk-circle1 sk-circle"></div>
+                        <div class="sk-circle2 sk-circle"></div>
+                        <div class="sk-circle3 sk-circle"></div>
+                        <div class="sk-circle4 sk-circle"></div>
+                        <div class="sk-circle5 sk-circle"></div>
+                        <div class="sk-circle6 sk-circle"></div>
+                        <div class="sk-circle7 sk-circle"></div>
+                        <div class="sk-circle8 sk-circle"></div>
+                        <div class="sk-circle9 sk-circle"></div>
+                        <div class="sk-circle10 sk-circle"></div>
+                        <div class="sk-circle11 sk-circle"></div>
+                        <div class="sk-circle12 sk-circle"></div>
+                    </div>
+                </div>
+        </div>
+    </div>
+<script src="js/bootstrap.js"></script>
+<script src="js/jquery.carousel.fullscreen.js"></script>

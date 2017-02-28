@@ -1,0 +1,16 @@
+<nav class="navbar navbar-dark navbar-fixed-top bg-inverse" style="background-color: rgb(64, 189, 183);">
+    <!--<button type="button" class="navbar-toggler hidden-sm-up" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation"></button>-->
+    <a class="navbar-brand" ui-sref="main">Dr.Remote <img src="img/doctor.png" width="30" height="40" class="img-fluid" style="display: inline-block"></a>
+    <a class="navbar-brand" href="#" ui-sref="help" style="color: whitesmoke;margin: -10px; font-size: medium "><span class="glyphicon glyphicon-question-sign"></span> </a>
+    <div id="navbar" ng-controller="loginCtrl">
+        <nav class="nav navbar-nav" style="float: right;margin-top: 30px"><!--
+            <a class="nav-item nav-link"  ui-sref="diary" style="color: whitesmoke;margin: 10px">일지</a>
+            <a class="nav-item nav-link"  ui-sref="patientList" style="color: whitesmoke;margin: 10px">환자</a>
+            <a class="nav-item nav-link"  ui-sref="status" style="color: whitesmoke;margin: 10px">차트</a>-->
+            <a class="nav-item nav-link" href="#" ui-sref="patientList" style="color: whitesmoke;margin: 10px; "><span class="glyphicon glyphicon-list"></span> 전체환자</a>
+            <a class="nav-item nav-link" href="#" ng-click="logout()" style="color: whitesmoke;margin: 10px; "><span class="glyphicon glyphicon-off"></span> 로그아웃</a>
+        </nav><form class="float-xs-right" style="float: right;margin-top: 10px">
+            <!--<input type="text" class="form-control" placeholder="Search...">-->
+        </form>
+    </div>
+</nav>

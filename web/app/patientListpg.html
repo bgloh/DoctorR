@@ -1,0 +1,61 @@
+<style>
+    .table tbody tr:hover{
+        text-decoration: none;
+        background-color: #00ddff;
+        cursor: pointer;
+    }
+    .table tbody tr p{
+        display: none;
+    }
+    .table tbody tr:hover p {
+        display: inline;
+    }
+
+</style>
+<div class="container-fluid" style="padding-top: 50px; background-color: whitesmoke">
+    <div class="row">
+
+        <div class="main">
+            <h1>전체 환자 리스트</h1>
+
+            <h3>환자 리스트</h3>
+
+
+
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>환자명</th>
+                        <th>성별</th>
+                        <th>출생일</th>
+                        <th>예정일</th>
+                        <th>가입일</th>
+                        <th>상태</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                 <tr ng-repeat="p in allPatientList">
+                     <td>{{p.u_name}}</td>
+                     <td>{{p.u_sex}}</td>
+                     <td>{{p.u_born | date:"MM월dd일"}}</td>
+                     <td>{{p.u_expected | date:"MM월dd일"}}</td>
+                     <td>{{p.u_join_date | date:"MM월dd일"}}</td>
+                     <td><span style="color: #5e5e5e;"  ng-hide="p.u_discharged == 0" >퇴원</span>
+                         <button class="btn btn-link" style="width: 100px;" ng-hide="p.u_discharged == 0" ng-click="hospitalize(p.u_id)">
+                             <span class="glyphicon glyphicon-eye-open"></span> 재입원
+                     </button>
+                         <button class="btn btn-link" style="width: 100px;" ng-hide="p.u_discharged == 1" ng-click="discharged(p.u_id)">
+                             <span class="glyphicon glyphicon-eye-close"></span> 퇴원처리
+                         </button></td>
+
+
+                    </tr>
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+</div>

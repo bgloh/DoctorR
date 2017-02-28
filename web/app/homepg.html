@@ -1,0 +1,280 @@
+<style>
+     .linkBtn:hover{
+        opacity: 0.6;
+        cursor: pointer;
+    }
+
+</style>
+<div class="container-fluid" style="padding-top: 50px; background-color: whitesmoke" ng-hide="start">
+   <div style="position: fixed;top:30%;left:45%;">
+       <center><img src="img/doctor.png" style="width: 50%;height: auto;">
+  <h3>환자를 선택해 주세요.</h3></center>
+    </div>
+</div>
+<div class="container-fluid" style="padding-top: 50px; background-color: whitesmoke" ng-hide="!start">
+    <div class="row">
+
+        <div class="main"><!--
+            <h1>Dr.{{a_name}}님의 환자</h1>-->
+
+            <!-- 로딩 -->
+            <div ng-style="loadingStyle" class="col-sm-12 col-md-12 col-lg-12 col-xs-12" style="z-index: 9; background-color: rgba(255,255,255,0.5); position: fixed; height: 1000px"></div>
+            <div class="sk-fading-circle" ng-style="loadingStyle" style="z-index: 11">
+                <div class="sk-circle1 sk-circle"></div>
+                <div class="sk-circle2 sk-circle"></div>
+                <div class="sk-circle3 sk-circle"></div>
+                <div class="sk-circle4 sk-circle"></div>
+                <div class="sk-circle5 sk-circle"></div>
+                <div class="sk-circle6 sk-circle"></div>
+                <div class="sk-circle7 sk-circle"></div>
+                <div class="sk-circle8 sk-circle"></div>
+                <div class="sk-circle9 sk-circle"></div>
+                <div class="sk-circle10 sk-circle"></div>
+                <div class="sk-circle11 sk-circle"></div>
+                <div class="sk-circle12 sk-circle"></div>
+            </div>
+
+            <div class="row placeholders">
+
+
+            </div>
+
+            <h3>{{selected_u_name}} ({{patient.u_sex}})<button class="btn btn-link" ng-click="discharged(patient.u_id)">
+                <span class="glyphicon glyphicon-eye-close"></span> 퇴원처리</button></h3>
+            <p style="color: #9d9d9d">출생일자 : {{patient.u_born | date:"yyyy년MM월dd일"}} / 예정일자 : {{patient.u_expected | date:"yyyy년MM월dd일"}} / 가입일자 : {{patient.u_join_date | date:"yyyy년MM월dd일"}}</p>
+            <br>
+
+            <ul class="nav nav-tabs nav-justified">
+                <li role="presentation" ng-class="{'active': showType === 'SFlist' || showType === 'SFgraph'}"><a ui-sref="main" ng-click="showValue('SF')">수면/수유</a></li>
+                <li role="presentation" ng-class="{'active': showType === 'THlist' || showType === 'THgraph'}"><a ui-sref="main" ng-click="showValue('TH')">환경 정보</a></li>
+            </ul>
+            <ul class="nav nav-tabs nav-justified">
+                <li role="presentation" ng-class="{'active': showType === 'SFlist'}"><a ui-sref="main" ng-click="showList('SF')">리스트</a></li>
+                <li role="presentation" ng-class="{'active': showType === 'SFgraph'}"><a ui-sref="main" ng-click="showGraph('SF')">그래프</a></li>
+                <li role="presentation" ng-class="{'active': showType === 'THlist'}"><a ui-sref="main" ng-click="showList('TH')">리스트</a></li>
+                <li role="presentation" ng-class="{'active': showType === 'THgraph'}"><a ui-sref="main" ng-click="showGraph('TH')">그래프</a></li>
+            </ul>
+
+            <div class="table-responsive col-sm-6 col-md-6 col-lg-6 col-xs-6" ng-if="showType === 'SFlist'">
+                <div id="sleepList" class="table-responsive">
+                <h3>수면 일지</h3>
+                <button class="btn btn-link" style="float:right" ng-click="exportToExcel('#sleepList','수면일지')">
+                    <span class="glyphicon glyphicon-share"></span> Export to Excel
+                </button>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>일자</th>
+                        <th>이름</th>
+                        <th>수면 시작</th>
+                        <th>수면 종료</th>
+                        <th>총 수면시간</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="s in sleep_List track by $index" ng-hide="$index > maxSleepRepeat">
+                        <td>{{s.s_start | date:"MM월dd일"}}</td>
+                        <td>{{s.u_name}}</td>
+                        <td>{{s.s_start | date:"h시 mm분 ss초"}}</td>
+                        <td>{{s.s_end | date:"h시 mm분 ss초"}}</td>
+                        <td>{{timeSplit(s.s_total)}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                </div>
+                <button class="btn btn-link" style="float:right;width: 100%" ng-click="addMaxSleepRepeat()">
+                    <span class="glyphicon glyphicon-plus"></span> 더보기
+                </button>
+            </div>
+
+            <div class="table-responsive col-sm-6 col-md-6 col-lg-6 col-xs-6" ng-if="showType === 'SFlist'">
+                <div id="feedList" class="table-responsive">
+                <h3>수유 일지</h3>
+                <button class="btn btn-link" style="float:right" ng-click="exportToExcel('#feedList','수유일지')">
+                <span class="glyphicon glyphicon-share"></span> Export to Excel
+                </button>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>일자</th>
+                        <th>이름</th>
+                        <th>수유 시작</th>
+                        <th>수유 종료</th>
+                        <th>총 수유시간(양)</th>
+                        <th>비고</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="f in feed_List track by $index" ng-hide="$index > maxFeedRepeat">
+                        <td>{{f.f_start | date:"MM월dd일"}}</td>
+                        <td>{{f.u_name}}</td>
+                        <td>{{f.f_start | date:"h시 mm분"}}</td>
+                        <td><span ng-if="f.feed!='분유'">{{f.f_end | date:"h시 mm분"}}</span></td>
+                        <td><span ng-if="f.feed!='분유'">{{timeSplit(f.f_total)}}</span>
+                            <span ng-if="f.feed=='분유'">{{f.f_total}}ml</span></td>
+                        <td>{{f.feed}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                </div>
+                <button class="btn btn-link" style="float:right;width: 100%" ng-click="addMaxFeedRepeat()">
+                    <span class="glyphicon glyphicon-plus"></span> 더보기
+                </button>
+            </div>
+
+
+            <div id="sleepGraph" class="table-responsive col-sm-12 col-md-12 col-lg-12 col-xs-12" ng-if="showType=='SFgraph'">
+                <h3>수면 그래프</h3>
+               <!-- <canvas id="line" class="chart chart-line" chart-data="sleepArray"
+                        chart-labels="sleepDates" chart-legend="true" chart-series="sleep_series"
+                        chart-click="LineOnClick" height="60" chart-colours="colours">
+                </canvas>-->
+                <canvas ps-chart
+                        chart-type="line"
+                        chart-data="sleepData"
+                        chart-options="sleepOptions"
+                        chart-click="LineOnClick" height="60" chart-colours="colours"></canvas>
+            </div>
+
+
+            <div id="feedGraph" class="table-responsive col-sm-12 col-md-12 col-lg-12 col-xs-12" ng-if="showType=='SFgraph'">
+                <h3>수유 그래프</h3>
+                <!--<canvas id="line2" class="chart chart-line" chart-datasets="datasets"
+                        chart-labels="feedDates" chart-series="feed_series"  chart-options="options" chart-dataset-override="datasetOverride"
+                        chart-click="LineOnClick" height="60" chart-colours="colours">
+                </canvas>-->
+                <canvas ps-chart
+                        chart-type="line"
+                        chart-data="feedData"
+                        chart-options="options"
+                        chart-click="LineOnClick" height="60" chart-colours="colours"></canvas>
+            </div>
+
+            <div class="table-responsive col-sm-12 col-md-12 col-lg-12 col-xs-12" ng-if="showType=='THlist'">
+                <div id="dataList" class="table-responsive">
+                    <h3>환경정보 일지</h3>
+                    <button class="btn btn-link" style="float:right" ng-click="exportToExcel('#dataList','환경정보 일지')">
+                        <span class="glyphicon glyphicon-share"></span> Export to Excel
+                    </button>
+                    <br/>
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>일자</th>
+                            <th>이름</th>
+                            <th>온도</th>
+                            <th>미세먼지</th>
+                            <th>이산화탄소 농도</th>
+                            <th>VOC</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="d in data_List track by $index" ng-if="$index < maxTHListRepeat">
+                            <td>{{d.d_date | date:"MM월dd일 [h:mm]"}}</td>
+                            <td>{{d.u_name}}</td>
+                            <td>{{d.d_temperature}}</td>
+                            <td>{{d.d_dust}}</td>
+                            <td>{{d.d_co2}}</td>
+                            <td>{{d.d_voc}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button class="btn btn-link" style="float:right;width: 100%" ng-click="addMaxTHListRepeat()">
+                    <span class="glyphicon glyphicon-plus"></span> 더보기
+                </button>
+            </div>
+
+            <div id="tempGraph" class="table-responsive col-sm-12 col-md-12 col-lg-12 col-xs-12" ng-if="showType=='THgraph'">
+                <h3>환경정보 그래프</h3>
+              <!--  <canvas id="line3" class="chart chart-line" chart-data="tempArray"
+                        chart-labels="dataDates" chart-legend="true" chart-series="temp_series"
+                        chart-click="LineOnClick" height="100" chart-colours="colours">
+                </canvas>-->
+                <canvas ps-chart
+                        chart-type="line"
+                        chart-data="dataData"
+                        chart-options="dataOptions"
+                        chart-click="LineOnClick" height="60" chart-colours="colours"></canvas>
+            </div>
+
+
+          <!--  <div id="dustGraph" class="table-responsive col-sm-12 col-md-12 col-lg-12 col-xs-12" ng-if="showType=='THgraph'">
+                <canvas id="line4" class="chart chart-line" chart-data="dustArray"
+                        chart-labels="dataDates" chart-legend="true" chart-series="dust_series"
+                        chart-click="LineOnClick" height="60" chart-colours="colours">
+                </canvas>
+            </div>
+
+            <div id="coGraph" class="table-responsive col-sm-12 col-md-12 col-lg-12 col-xs-12" ng-if="showType=='THgraph'">
+                <canvas id="line5" class="chart chart-line" chart-data="coArray"
+                        chart-labels="dataDates" chart-legend="true" chart-series="co_series"
+                        chart-click="LineOnClick" height="60" chart-colours="colours">
+                </canvas>
+            </div>
+
+
+            <div id="vocGraph" class="table-responsive col-sm-12 col-md-12 col-lg-12 col-xs-12" ng-if="showType=='THgraph'">
+                <canvas id="line6" class="chart chart-line" chart-data="vocArray"
+                        chart-labels="dataDates" chart-legend="true" chart-series="voc_series"
+                        chart-click="LineOnClick" height="60" chart-colours="colours">
+                </canvas>
+            </div>-->
+            <div class="table-responsive col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                <div id="checkList" class="table-responsive">
+                    <h3>체크 리스트</h3>
+                <button class="btn btn-link" style="float:right" ng-click="exportToExcel('#checkList','환자일지')">
+                    <span class="glyphicon glyphicon-share"></span> Export to Excel
+                </button>
+                <br/>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>일자</th>
+                        <th>이름</th>
+                        <th>키</th>
+                        <th>몸무게</th>
+                        <th>엄마일기</th>
+                        <th>진료병원</th>
+                        <th>진료사유</th>
+                        <th>접종</th>
+                        <th>진료 예정일</th>
+                        <th>진료 예정과</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="d in check_List track by $index" ng-if="$index < maxListRepeat">
+                            <td>{{d.c_date | date:"MM월dd일 [h:mm]"}}</td>
+                            <td>{{d.u_name}}</td>
+                            <td>{{d.c_h}}</td>
+                            <td>{{d.c_w}}</td>
+                            <td>{{d.c_memo}}<span ng-if="d.c_img"><a ng-click="showImg(d.c_img)" class="linkBtn">(사진)</a></span> </td>
+                            <td>{{d.c_hospital}}</td>
+                            <td>{{d.c_treat}}</td>
+                            <td>{{d.c_shot}}</td>
+                            <td><span ng-if="d.c_next!=0">{{dateTime(d.c_next)}}</span></td>
+                            <td>{{d.c_depart}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+                <button class="btn btn-link" style="float:right;width: 100%" ng-click="addMaxListRepeat()">
+                    <span class="glyphicon glyphicon-plus"></span> 더보기
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+<script src="js/bootstrap.min.js"></script>
+<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+<script src="assets/js/vendor/holder.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<!--<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>-->

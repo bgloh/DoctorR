@@ -1,0 +1,30 @@
+<script>
+    $("#login").addClass("active");
+    $("#homebtn").click(function() {
+        $("#FindId").removeClass("active");
+        $("#homenav").addClass("active");
+        $("#login").addClass("active");
+    });
+
+    $("#btn1").click(function() {
+        $("#login").removeClass("active");
+    });
+</script>
+<!--최상단 네비게이션바-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<nav class="navbar navbar-default navbar-static-top" style="background-color:rgba(200,200,200,0.5)" >
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a id='homebtn' class= "navbar-brand navbar-brand-centered" data-toggle="tab" href="#mainhome" style="background-color:rgba(200,200,200,0);border:none;color:white; float: right; font-family:'Adobe 고딕 Std B' " >Dr.R</a>
+        </div>
+        <form  id='loginformbtn' style="float: left; margin: 10px;">
+            <div class="btn-group-sm ">
+                <b style="color: #3c3c3c">운영자 전용 페이지</b>
+<!--
+                <button id="btn1" data-toggle="tab" class="btn btn-info" data-target="#FindId" data-dismiss="modal" style="background-color: oldlace; border: 0px; color: #2e6da4;">계정관리</button>
+-->
+            </div>
+        </form>
+    </div>
+</nav>
